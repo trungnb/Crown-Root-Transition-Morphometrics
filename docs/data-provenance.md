@@ -28,10 +28,10 @@ image acquisition, execution date, hardware, or analysis package versions.
 
 | Published CSV | SHA-256 |
 |---|---|
-| `results/crown_root_ratio_dynamic_10_90.csv` | `575692c2470dcf2cd0a63ac56cee91828d4cfd9774f5b0d2eac25a4b9acf470b` |
-| `results/P2/crown_root_ratio_dynamic_10_90.csv` | `5ce19415ecca6e1edc576cfe4bb8d182d052808f36b08867d6cc78fd2b84da31` |
-| `results/3/upper_right_central_incisor_fdi11.csv` | `01eab8532b5cdff6043ddc476e17a0780ce7d20f3558e68574762d51e75d859c` |
-| `results/P2/3/upper_right_central_incisor_fdi11.csv` | `2accc016a5838b2eba9af47b1aa18c14a5f4b1bbf84b80dab6db4712642090a0` |
+| `results/ratios_person1.csv` | `575692c2470dcf2cd0a63ac56cee91828d4cfd9774f5b0d2eac25a4b9acf470b` |
+| `results/ratios_person2.csv` | `5ce19415ecca6e1edc576cfe4bb8d182d052808f36b08867d6cc78fd2b84da31` |
+| `results/profiles/person1_fdi11_shell3.csv` | `01eab8532b5cdff6043ddc476e17a0780ce7d20f3558e68574762d51e75d859c` |
+| `results/profiles/person2_fdi11_shell3.csv` | `2accc016a5838b2eba9af47b1aa18c14a5f4b1bbf84b80dab6db4712642090a0` |
 | `results/ratio_summary.csv` | `fff022d6f49d4e4b68ce2d43b623dd8fa5f495f6acf19008835056c82524acd2` |
 
 ## Figure and publication scope
