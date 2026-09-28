@@ -19,7 +19,7 @@ flowchart LR
     class C output
 ```
 
-![Saved intensity profiles for one example tooth and all saved crown-root ratios](results/figures/prototype-overview.png)
+![Saved intensity profiles for one example tooth and all saved crown-root ratios](results/figures/prototype-overview.svg)
 
 ## What the prototype produced
 
