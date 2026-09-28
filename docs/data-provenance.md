@@ -32,12 +32,12 @@ image acquisition, execution date, hardware, or analysis package versions.
 | `results/ratios_person2.csv` | `5ce19415ecca6e1edc576cfe4bb8d182d052808f36b08867d6cc78fd2b84da31` |
 | `results/profiles/person1_fdi11_shell3.csv` | `01eab8532b5cdff6043ddc476e17a0780ce7d20f3558e68574762d51e75d859c` |
 | `results/profiles/person2_fdi11_shell3.csv` | `2accc016a5838b2eba9af47b1aa18c14a5f4b1bbf84b80dab6db4712642090a0` |
-| `results/ratio_summary.csv` | `fff022d6f49d4e4b68ce2d43b623dd8fa5f495f6acf19008835056c82524acd2` |
+| `results/ratio_summary.csv` | `3c0f4dc1e7ef332eb6c0c53fee7d69cbaedd0bff2ea3f5279edd88edc2117b5c` |
 
 ## Figure and publication scope
 
 `results/figures/prototype-overview.svg` was rendered by `scripts/render_figures.py` from
-the two selected FDI 11 profile CSVs and two dynamic 10–90% ratio CSVs. The renderer shifts
+the two selected FDI 11 profile CSVs and two published ratio CSVs. The renderer shifts
 each saved `z_mm` profile to its own zero and formats the chart; it does not run image
 processing or recalculate ratios. Figure and table interpretation is documented in the
 [project README](../README.md).
