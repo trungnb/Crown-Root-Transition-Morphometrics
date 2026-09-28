@@ -3,7 +3,7 @@
 - [Person1 ratios](crown_root_ratio_dynamic_10_90.csv) and [Person2 ratios](P2/crown_root_ratio_dynamic_10_90.csv): 16 teeth each, historical dynamic 10–90% search variant.
 - [Descriptive summary](ratio_summary.csv): count / median / minimum / maximum of the stored `crown_root_ratio_mm` column.
 - [Person1 example intensity profile](3/upper_right_central_incisor_fdi11.csv) and [Person2 example intensity profile](P2/3/upper_right_central_incisor_fdi11.csv): FDI 11, shell thickness three voxels.
-- [Overview PNG](figures/prototype-overview.png) / [SVG](figures/prototype-overview.svg): rendered with `scripts/render_figures.py` from these tables.
+- [Overview SVG](figures/prototype-overview.svg): current portfolio figure rendered from these saved tables. `scripts/render_figures.py` contains the reproducible plotting logic.
 
 Column names are preserved from the historical notebooks. `crown_trans_mm` includes the
 transition zone; `root_mm` is the saved root extent; `crown_root_ratio_mm` is their saved
