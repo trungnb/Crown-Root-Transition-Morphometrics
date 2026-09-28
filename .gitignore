@@ -5,10 +5,7 @@
 !/LICENSE
 !/requirements.txt
 
-# Keep one public provenance record; governance and working notes stay local.
-!/docs/
-/docs/*
-!/docs/data-provenance.md
+# Documentation and governance remain local.
 
 # Preserve all five historical analysis notebooks.
 !/notebooks/
