@@ -53,7 +53,7 @@ fig, (a, b) = plt.subplots(
 )
 fig.subplots_adjust(left=0.075, right=0.97, top=0.79, bottom=0.19, wspace=0.32)
 fig.suptitle(
-    "Exploring tooth structure through HU profiles",
+    "Exploring crown–root transition from tooth intensity profiles",
     x=0.06,
     ha="left",
     y=0.97,
@@ -63,7 +63,7 @@ fig.suptitle(
 fig.text(
     0.06,
     0.90,
-    "Prototype outputs • shell intensity profiles and crown–root measurements in two cases",
+    "Exploratory prototype • shell-intensity profiles and saved crown–root ratios in two cases",
     fontsize=11,
     color="#586777",
 )
@@ -75,7 +75,7 @@ for person, file, color in cases:
     a.plot(x, [float(r["mean_HU"]) for r in data], color=color, lw=2, label=person)
 a.set(
     xlabel="Distance along saved aligned axis (mm; shifted to zero)",
-    ylabel="Mean shell HU",
+    ylabel="Mean shell intensity",
 )
 a.set_title(
     "A  Example tooth: upper right central incisor", loc="left", pad=14, fontsize=10
@@ -83,7 +83,7 @@ a.set_title(
 a.text(
     0.98,
     0.98,
-    "3-voxel shell • FDI 11",
+    "3-voxel shell • FDI 11 • independent origins",
     transform=a.transAxes,
     va="top",
     ha="right",
@@ -98,13 +98,12 @@ lookup = {r["filename"]: float(r["crown_root_ratio_mm"]) for r in data2}
 for i, r in enumerate(data1):
     x1 = float(r["crown_root_ratio_mm"])
     x2 = lookup[r["filename"]]
-    b.plot([x1, x2], [i, i], color="#D5DEE5", lw=1, zorder=1)
-    b.scatter(x1, i, color=TEAL, s=35, label="Person1" if i == 0 else None, zorder=2)
-    b.scatter(x2, i, color=ORANGE, s=35, label="Person2" if i == 0 else None, zorder=2)
+    b.scatter(x1, i, color=TEAL, marker="o", s=38, label="Person1" if i == 0 else None, zorder=2)
+    b.scatter(x2, i, color=ORANGE, marker="s", s=38, label="Person2" if i == 0 else None, zorder=2)
 b.set(
     yticks=range(16),
     yticklabels=labels,
-    xlabel="Saved crown + transition / root ratio (mm/mm)",
+    xlabel="Saved crown + transition / root ratio",
     ylabel="FDI tooth number",
     xlim=(0, 4),
 )
@@ -115,5 +114,5 @@ b.legend(frameon=False, loc="upper right", bbox_to_anchor=(1, -0.18), ncol=2)
 save(
     fig,
     "prototype-overview",
-    "Sources: selected shell-3 HU CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; no re-segmentation or CEJ recalculation.",
+    "Sources: selected shell-3 intensity CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; no re-segmentation or CEJ recalculation.",
 )
