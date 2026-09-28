@@ -24,5 +24,5 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#17324D} .tick{font-size:15px} 
 <text x="677" y="315" text-anchor="middle" class="label" transform="rotate(-90 677 315)">FDI tooth number</text>
 <circle cx="940" cy="545" r="5.5" fill="#168B8A"/><text x="957" y="550" class="small">Person1</text>
 <rect x="1035" y="540" width="10" height="10" rx="1" fill="#D17845"/><text x="1052" y="550" class="small">Person2</text>
-<text x="75" y="582" class="small">Sources: selected shell-3 intensity CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; cases are not paired; no CEJ recalculation.</text>
+<text x="75" y="582" class="small">Sources: selected shell-3 intensity CSVs and published ratio tables. All 16 teeth shown; cases are not paired; no CEJ recalculation.</text>
 </svg>
