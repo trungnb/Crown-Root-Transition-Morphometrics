@@ -6,7 +6,7 @@ localisation or validated crown–root morphometry.
 
 ## Prototype snapshot
 
-| Case | Teeth | Median saved ratio | Saved range |
+| Case | n | Median ratio | Range |
 |---|---:|---:|---:|
 | Person1 | 16 | 0.6885 | 0.375–3.222 |
 | Person2 | 16 | 0.8315 | 0.569–3.625 |
@@ -21,7 +21,7 @@ diagnostic results.
 
 ```mermaid
 flowchart LR
-    A["SEGMENTED TOOTH<br/>CT + tooth mask"] --> B["ALIGN + SHELL<br/>Principal-axis alignment<br/>Outer-shell sampling"]
+    A["INPUT<br/>CT + tooth mask"] --> B["ALIGN + SHELL<br/>Principal-axis alignment<br/>Outer-shell sampling"]
     B --> C["INTENSITY PROFILE<br/>Slice-wise shell summaries"]
     C --> D["PROTOTYPE HEURISTIC<br/>Two stable regions<br/>+ transition zone"]
     D --> E["SAVED OUTPUTS<br/>Profiles + exploratory<br/>crown–root ratios"]
