@@ -40,10 +40,9 @@ heuristic and was not calibrated against anatomical CEJ annotations.
 
 - [Shell-profile notebooks](notebooks/CEJ1.ipynb) / [Person2](notebooks/CEJ2.ipynb)
 - [Ratio notebooks](notebooks/ratio1.ipynb) / [Person2](notebooks/ratio2.ipynb)
-- [Single-tooth exploration](notebooks/Pulp.ipynb)
 - [Person1 ratios](results/ratios_person1.csv) / [Person2 ratios](results/ratios_person2.csv)
 - [Example FDI 11 profiles](results/profiles/person1_fdi11_shell3.csv) / [Person2](results/profiles/person2_fdi11_shell3.csv)
-- [Figure script](scripts/render_figures.py) · [Dependencies](requirements.txt)
+- [Figure script](scripts/render_figures.py)
 
 ## Scope and limitations
 
@@ -67,4 +66,4 @@ A research-grade extension would represent geometry in physical coordinates or u
 resampling, define shell thickness in millimetres, improve robust profile features, and validate
 transition locations against independent anatomical CEJ annotations in a larger cohort.
 
-[trungnb](https://github.com/trungnb) · [Academic website](https://trungnb.github.io/) · [Reuse status](LICENSE)
+[Academic website](https://trungnb.github.io/) · [Reuse status](LICENSE)
