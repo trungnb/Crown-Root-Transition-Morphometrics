@@ -1,0 +1,32 @@
+[
+  {
+    "notebook": "notebooks/CEJ1.ipynb",
+    "original_sha256": "d43d1665f79f1d0905ee67573cb076e2c98ded63eb8cd09d9d71512130539b25",
+    "published_sha256": "7aed77227370a3608cc0777e2a668c3d17b3091c933fe503d2057419601261b9",
+    "retained_output_cells_zero_based": []
+  },
+  {
+    "notebook": "notebooks/CEJ2.ipynb",
+    "original_sha256": "811595a3af250d866f2d443378f7c48f1b3ddbdc8a92eb860119c665fde3b6fe",
+    "published_sha256": "c6576b64d0cbc717bfbdd7a5227dbceda3514238e4967fc9232d8d7a1dfb52e3",
+    "retained_output_cells_zero_based": []
+  },
+  {
+    "notebook": "notebooks/ratio1.ipynb",
+    "original_sha256": "92ac488a00c0ef0b8ac16a948b2d393fae002c3c67c9e5fcb59cb3c575b862ff",
+    "published_sha256": "8e580fae70898a6aa96fd2933a65533c559749c1c615766c7afcff6c3bb97f1c",
+    "retained_output_cells_zero_based": []
+  },
+  {
+    "notebook": "notebooks/ratio2.ipynb",
+    "original_sha256": "48562edc75067e6d391a058191ca1e981bba33112f75cc29a1bb6423cc81b8d4",
+    "published_sha256": "e32bc1cff7c1c590b7482cef85d7fde749725d98fb8eea5d34cb20f883d142a3",
+    "retained_output_cells_zero_based": []
+  },
+  {
+    "notebook": "notebooks/Pulp.ipynb",
+    "original_sha256": "57954ea7e42979677fc451bf153a3ddb3f93fb80706ff49b21a5b9bfcd6814ba",
+    "published_sha256": "6689f580bbc9966adeb940c60f8210311f68e9447cca6b6e979e84e2ffa42df5",
+    "retained_output_cells_zero_based": []
+  }
+]
