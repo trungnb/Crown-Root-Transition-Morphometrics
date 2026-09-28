@@ -73,7 +73,7 @@ for person, file, color in cases:
     x = [v - x[0] for v in x]
     a.plot(x, [float(r["mean_HU"]) for r in data], color=color, lw=2, label=person)
 a.set(
-    xlabel="Saved z_mm offset (historical mm label; exploratory)",
+    xlabel="Saved z_mm offset (zero-shifted)",
     ylabel="Mean shell intensity",
 )
 a.set_title(
