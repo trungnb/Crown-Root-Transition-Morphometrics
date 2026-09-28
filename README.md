@@ -4,8 +4,9 @@
 > transition proxy. It does **not** establish anatomical CEJ localisation.
 
 **Idea:** explore whether changes in intensity along a segmented tooth can identify a
-crown–root transition. **My approach:** align segmented teeth, sample their outer-shell
-intensity profiles, and search for two relatively stable regions separated by a transition zone.
+crown–root transition. Segmented teeth are aligned, their outer-shell intensity profiles
+are sampled, and a heuristic searches for two relatively stable regions separated by a
+transition zone.
 
 ```mermaid
 flowchart LR
@@ -19,9 +20,7 @@ flowchart LR
     class C output
 ```
 
-![Saved intensity profiles for one example tooth and all saved crown-root ratios](results/figures/prototype-overview.svg)
-
-## What the prototype produced
+## Saved result snapshot
 
 | Case | Teeth | Median saved ratio | Saved range |
 |---|---:|---:|---:|
@@ -29,57 +28,106 @@ flowchart LR
 | Person2 | 16 | 0.8315 | 0.569–3.625 |
 
 Ratios summarize the historical `dynamic_10_90` output column `crown_root_ratio_mm`.
-Its numerator includes the transition zone. The chart shows all 16 teeth per case,
-including large and anatomically implausible ratios. These values are retained as
-prototype failure cases rather than filtered out. They are not reference CEJ annotations,
-validated morphometric measurements, or diagnostic results.
+The numerator includes the transition zone. The chart shows all 16 teeth per case,
+including large and anatomically implausible ratios. These are retained as prototype
+failure cases, not reference CEJ annotations, validated measurements, or diagnostic results.
 
-## What I built
+![Saved intensity profiles for one example tooth and all saved crown-root ratios](results/figures/prototype-overview.svg)
 
-- Extracted outer-shell intensity profiles after principal-axis alignment of segmented teeth.
-- Compared shell thicknesses and implemented a profile-based three-zone heuristic.
-- Exported exploratory crown–root ratios and built interactive views for inspecting a tooth crop.
+## How the prototype works
 
-## Prototype limitations
+1. Start with CT/NIfTI images and existing tooth masks. Crop teeth and align them using
+   principal axes.
+2. Erode the binary tooth mask to make outer shells one to five voxels thick. For each
+   slice, save shell voxel counts and intensity summaries (`mean`, `standard deviation`,
+   `minimum`, `maximum`, and the historical `z_mm` field).
+3. Compare shell profiles. The ratio notebooks use the three-voxel shell and search the
+   10–90% profile interval for two stable regions separated by a transition. Candidate
+   splits are scored using regional intensity differences, within-region variability, and
+   a position weight. The maximum transition fraction varies by tooth type: 0.25 for
+   incisors, 0.20 for canines/premolars, and 0.15 for molars.
+4. Use profile direction to assign the crown side. The saved numerator is crown plus
+   transition; the denominator is the root extent. The notebooks export slice-based and
+   historically millimetre-labelled ratios.
+5. `Pulp.ipynb` separately explores mask hole filling, cropping, PCA alignment, and
+   interactive Matplotlib/Plotly slice views for one tooth.
 
-This was an early exploratory implementation, preserved to show the development process rather
-than a finished measurement method.
+## Notebooks and saved tables
 
-- The detected transition is an **intensity-derived proxy**, not a validated anatomical CEJ.
-- The search uses hand-crafted assumptions, including the 10–90% search interval and
-  tooth-type-specific transition limits.
-- Historical PCA/alignment calculations operate in voxel-index space. The saved millimetre
-  values use the original image spacing after rotation and therefore should not be interpreted
-  as validated physical morphometry, particularly for anisotropic voxels.
-- Shell thickness is defined in voxels rather than millimetres.
-- Image rotation/interpolation may influence the intensity profiles.
-- No manual CEJ reference, inter-rater comparison, external validation, or clinical validation
-  was performed.
+| File | What it contains | Saved output represented here |
+|---|---|---|
+| [CEJ1](notebooks/CEJ1.ipynb) / [CEJ2](notebooks/CEJ2.ipynb) | Historical shell-profile experiments for Person1 / Person2 | FDI 11 shell-3 intensity profiles |
+| [ratio1](notebooks/ratio1.ipynb) / [ratio2](notebooks/ratio2.ipynb) | Profile comparisons, heuristic zone search, and ratio export | 16 dynamic 10–90% ratios per case |
+| [Pulp](notebooks/Pulp.ipynb) | Single-tooth mask filling, cropping, PCA, and interactive views | No table in this release |
 
-A future version would use physical/world coordinates or isotropic resampling, define shell
-thickness in millimetres, use more robust profile features, and validate the transition against
-independent anatomical reference annotations.
+| Saved file | Contents | Source |
+|---|---|---|
+| [`results/crown_root_ratio_dynamic_10_90.csv`](results/crown_root_ratio_dynamic_10_90.csv) and [`results/P2/crown_root_ratio_dynamic_10_90.csv`](results/P2/crown_root_ratio_dynamic_10_90.csv) | 16 historical ratios per case | `ratio1.ipynb` / `ratio2.ipynb` |
+| [`results/ratio_summary.csv`](results/ratio_summary.csv) | Count, median, minimum, and maximum of saved `crown_root_ratio_mm` values | Descriptive calculation from the two ratio tables |
+| [`results/3/upper_right_central_incisor_fdi11.csv`](results/3/upper_right_central_incisor_fdi11.csv) and [`results/P2/3/upper_right_central_incisor_fdi11.csv`](results/P2/3/upper_right_central_incisor_fdi11.csv) | FDI 11 per-slice intensity profile; shell thickness three voxels | `CEJ1.ipynb` / `CEJ2.ipynb` |
+| [`results/figures/prototype-overview.svg`](results/figures/prototype-overview.svg) | Example profiles and all saved ratios | [`scripts/render_figures.py`](scripts/render_figures.py) and the four source profile/ratio tables above |
 
-## Notebook map
+Column names are preserved from the historical notebooks. `crown_trans_mm` includes the
+transition zone, `root_mm` is the saved root extent, and `trans_ratio_used` records the
+tooth-type transition fraction. Large ratios are shown without outlier filtering or
+retrospective correction.
 
-| Notebook | Role |
-|---|---|
-| [CEJ1](notebooks/CEJ1.ipynb) / [CEJ2](notebooks/CEJ2.ipynb) | Historical shell-profile experiments for Person1 / Person2 |
-| [ratio1](notebooks/ratio1.ipynb) / [ratio2](notebooks/ratio2.ipynb) | Profile comparisons, heuristic zone search and ratio export |
-| [Pulp](notebooks/Pulp.ipynb) | Single-tooth mask filling, cropping, PCA and interactive views |
+## Limitations and interpretation
 
-**Data:** two CT cases with existing tooth masks. Raw scans and masks are not distributed;
-the repository includes selected numerical profiles and ratio tables. [Input requirements](data/README.md).
+This is an early exploratory implementation, retained to show the development process.
+The transition is an **intensity-derived proxy**, not a validated anatomical CEJ.
 
-## Explore the project
+- PCA uses voxel-index coordinates rather than explicit physical/world coordinates. This
+  matters when voxel spacing is anisotropic.
+- After rotation, the historical code uses the original image z-spacing for `z_mm`.
+  Millimetre-labelled lengths and ratios are therefore exploratory, not validated physical
+  morphometry.
+- Shell thickness is set in erosion voxels, not millimetres. Rotation and interpolation
+  can affect the intensity profiles.
+- The 10–90% search interval, minimum stable-region length, position weighting, and
+  tooth-specific transition limits are hand-crafted assumptions.
+- The profile panel shifts each saved `z_mm` series to start at zero independently; it
+  does not recalculate alignment.
+- There are no manual CEJ reference annotations, inter-rater comparisons, external
+  validation, or clinical validation. The two cases do not establish population-level
+  performance or diagnostic utility.
 
-[Methods](docs/methodology.md) · [Data and provenance](docs/data-provenance.md) · [Saved tables](results/README.md) · [Viewing / chart rendering](docs/environment.md)
+The historical notebooks and saved outputs were not rerun or retrospectively corrected
+for this portfolio release. No segmentation, model training, or reproduction audit was
+performed. Exact historical software versions, hardware, and input image versions are
+not fully documented.
 
-**Status:** historical exploratory prototype. Results shown here were saved during earlier
-experiments; the research notebooks were not rerun or retrospectively corrected for this
-portfolio release. Figures were rendered from the saved tables.
+## Inputs and viewing
+
+The notebooks refer to CT/NIfTI images and tooth masks from two cases. Raw scans, masks,
+and acquisition/consent records are not distributed. Notebook paths to Colab/Google Drive
+are preserved for historical context. Running the research notebooks requires authorised
+input data, suitable compute resources, and dependencies; the original runtime is not
+reconstructed here. Notebooks can be read directly on GitHub.
+
+The figure renderer reads only the published CSV tables; it does not run image processing.
+To render the SVG with Python 3.11–3.13:
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/render_figures.py
+```
+
+`requirements.txt` covers chart rendering. Notebook imports include additional libraries,
+but exact historical package versions and a complete analysis environment are unverified.
+The figure was rendered from saved results for this release.
+
+## Provenance and reuse
+
+The original analysis cell sources, parameters, and order are preserved in all five
+notebooks. Publication clears session metadata, widget state, and output previews; no
+notebook output cells are retained. The four selected source CSVs are existing saved
+tables, byte-for-byte unchanged. Hashes and source details are recorded in
+[`docs/data-provenance.md`](docs/data-provenance.md). Raw scans, masks, unrelated notebooks,
+and local backups are excluded from Git.
+
+No project-wide open-source license has been selected. Public availability does not grant
+reuse rights; see [`LICENSE`](LICENSE). Third-party libraries and source datasets retain
+their own terms.
 
 **Author:** [trungnb](https://github.com/trungnb) · [Academic website](https://trungnb.github.io/)
-
-Research and educational use only; this prototype has not been clinically validated.
-See [licensing status](LICENSE) before reuse.

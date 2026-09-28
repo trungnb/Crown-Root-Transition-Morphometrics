@@ -1,5 +1,1 @@
-nibabel
-numpy
-pandas
-jupyter
-scikit-image
+matplotlib>=3.9,<4

@@ -1,34 +1,56 @@
-# Only explicitly selected portfolio files are published.
-/.local-originals/
-/.venv/
-/.DS_Store
-**/.DS_Store
-**/__pycache__/
-**/.ipynb_checkpoints/
-/.env*
-*.nii
-*.nii.gz
-*.dcm
-*.xlsx
-*.docx
-/data/*
-!/data/README.md
+# Publish only the portfolio files allowlisted below. Other project material stays local.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/requirements.txt
+
+# Keep one public provenance record; governance and working notes stay local.
+!/docs/
+/docs/*
+!/docs/data-provenance.md
+
+# Preserve all five historical analysis notebooks.
+!/notebooks/
 /notebooks/*
 !/notebooks/CEJ1.ipynb
 !/notebooks/CEJ2.ipynb
 !/notebooks/ratio1.ipynb
 !/notebooks/ratio2.ipynb
 !/notebooks/Pulp.ipynb
-/results/**
-!/results/README.md
-!/results/figures/
-!/results/figures/*.png
-!/results/figures/*.svg
+
+# Publish only the selected tables and the overview figure.
+!/results/
+/results/*
 !/results/crown_root_ratio_dynamic_10_90.csv
-!/results/P2/
-!/results/P2/crown_root_ratio_dynamic_10_90.csv
-!/results/3/
-!/results/3/upper_right_central_incisor_fdi11.csv
-!/results/P2/3/
-!/results/P2/3/upper_right_central_incisor_fdi11.csv
 !/results/ratio_summary.csv
+!/results/figures/
+/results/figures/*
+!/results/figures/prototype-overview.svg
+!/results/3/
+/results/3/*
+!/results/3/upper_right_central_incisor_fdi11.csv
+!/results/P2/
+/results/P2/*
+!/results/P2/crown_root_ratio_dynamic_10_90.csv
+!/results/P2/3/
+/results/P2/3/*
+!/results/P2/3/upper_right_central_incisor_fdi11.csv
+
+# Keep only the small figure renderer from the scripts directory.
+!/scripts/
+/scripts/*
+!/scripts/render_figures.py
+
+# Local and generated files.
+**/.DS_Store
+**/__pycache__/
+**/.ipynb_checkpoints/
+/.local-originals/
+/.venv/
+.env*
+*.nii
+*.nii.gz
+*.dcm
+*.xlsx
+*.docx
