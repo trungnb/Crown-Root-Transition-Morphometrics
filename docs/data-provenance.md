@@ -20,7 +20,7 @@ Original CSV / notebook files do not establish the exact historical data version
 execution date, hardware or analysis package versions; those details remain unverified.
 
 ## Figures
-`scripts/render_figures.py` reads the published CSVs and renders PNG and SVG figures.
+`scripts/render_figures.py` reads the published CSVs and can render PNG and SVG figures; the committed portfolio figure is SVG.
 It performs chart formatting and display-unit conversion only; it does not import
 segmentation or generative-model libraries. The Python lockfile covers these portfolio
 tools. Figure sources are documented in the result index and figure captions.
