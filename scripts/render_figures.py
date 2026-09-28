@@ -77,12 +77,12 @@ a.set(
     ylabel="Mean shell intensity",
 )
 a.set_title(
-    "A  Example tooth: upper right central incisor", loc="left", pad=14, fontsize=10
+    "A  Example shell-intensity profile · FDI 11", loc="left", pad=14, fontsize=10
 )
 a.text(
     0.98,
     0.98,
-    "3-voxel shell • FDI 11 • each case starts at zero",
+    "3-voxel shell • profiles zero-shifted independently",
     transform=a.transAxes,
     va="top",
     ha="right",
@@ -102,7 +102,7 @@ for i, r in enumerate(data1):
 b.set(
     yticks=range(16),
     yticklabels=labels,
-    xlabel="Saved crown + transition / root ratio",
+    xlabel="Exploratory crown–root ratio",
     ylabel="FDI tooth number",
     xlim=(0, 4),
 )
