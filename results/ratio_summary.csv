@@ -1,3 +1,0 @@
-case,teeth,median,min,max,source_file,source_column
-Person1,16,0.6885,0.375,3.222,ratios_person1.csv,crown_root_ratio_mm
-Person2,16,0.8315,0.569,3.625,ratios_person2.csv,crown_root_ratio_mm
