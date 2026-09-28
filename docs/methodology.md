@@ -52,8 +52,8 @@ CEJ analysis.
 
 The figure shows all 16 ratios for each case, including extreme values. These values are
 retained to expose prototype failure modes rather than filtered according to anatomical
-plausibility. Connecting lines join the same FDI tooth number across two different cases;
-they are not longitudinal changes. The intensity-profile panel uses the upper right central
+plausibility. Person1 and Person2 are shown as separate markers for each FDI tooth number;
+the cases are not paired or longitudinal observations. The intensity-profile panel uses the upper right central
 incisor (FDI 11), shell thickness three voxels. Its `z_mm` axis is shifted to start at zero
 independently in each case, without recalculating alignment.
 
