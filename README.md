@@ -23,7 +23,7 @@ flowchart LR
 
 ## What the prototype produced
 
-| Case | Teeth in saved table | Median ratio | Observed range |
+| Case | Teeth | Median saved ratio | Saved range |
 |---|---:|---:|---:|
 | Person1 | 16 | 0.6885 | 0.375–3.222 |
 | Person2 | 16 | 0.8315 | 0.569–3.625 |
