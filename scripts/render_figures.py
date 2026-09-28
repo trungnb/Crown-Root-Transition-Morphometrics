@@ -44,8 +44,8 @@ def save(fig, name, footer):
 
 
 cases = [
-    ("Person1", "crown_root_ratio_dynamic_10_90.csv", TEAL),
-    ("Person2", "P2/crown_root_ratio_dynamic_10_90.csv", ORANGE),
+    ("Person1", "ratios_person1.csv", TEAL),
+    ("Person2", "ratios_person2.csv", ORANGE),
 ]
 fig, (a, b) = plt.subplots(
     1, 2, figsize=(12.8, 6.2), gridspec_kw={"width_ratios": [1.15, 1]}
@@ -67,8 +67,8 @@ fig.text(
     color="#586777",
 )
 for person, file, color in cases:
-    prefix = "" if person == "Person1" else "P2/"
-    data = rows(prefix + "3/upper_right_central_incisor_fdi11.csv")
+    profile = "profiles/person1_fdi11_shell3.csv" if person == "Person1" else "profiles/person2_fdi11_shell3.csv"
+    data = rows(profile)
     x = [float(r["z_mm"]) for r in data]
     x = [v - x[0] for v in x]
     a.plot(x, [float(r["mean_HU"]) for r in data], color=color, lw=2, label=person)
@@ -113,5 +113,5 @@ b.legend(frameon=False, loc="upper right", bbox_to_anchor=(1, -0.18), ncol=2)
 save(
     fig,
     "prototype-overview",
-    "Sources: selected shell-3 intensity CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; cases are not paired; no CEJ recalculation.",
+    "Sources: selected shell-3 intensity CSVs and published ratio tables. All 16 teeth shown; cases are not paired; no CEJ recalculation.",
 )
