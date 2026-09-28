@@ -37,7 +37,6 @@ def rows(name):
 
 def save(fig, name, footer):
     fig.text(0.06, 0.018, footer, fontsize=8, color="#586777")
-    fig.savefig(OUT / (name + ".png"), dpi=180, bbox_inches="tight")
     fig.savefig(OUT / (name + ".svg"), bbox_inches="tight")
     svg = OUT / (name + ".svg")
     svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
@@ -74,7 +73,7 @@ for person, file, color in cases:
     x = [v - x[0] for v in x]
     a.plot(x, [float(r["mean_HU"]) for r in data], color=color, lw=2, label=person)
 a.set(
-    xlabel="Distance along saved aligned axis (mm; shifted to zero)",
+    xlabel="Saved z_mm offset (historical mm label; exploratory)",
     ylabel="Mean shell intensity",
 )
 a.set_title(
@@ -83,7 +82,7 @@ a.set_title(
 a.text(
     0.98,
     0.98,
-    "3-voxel shell • FDI 11 • independent origins",
+    "3-voxel shell • FDI 11 • each case starts at zero",
     transform=a.transAxes,
     va="top",
     ha="right",
@@ -114,5 +113,5 @@ b.legend(frameon=False, loc="upper right", bbox_to_anchor=(1, -0.18), ncol=2)
 save(
     fig,
     "prototype-overview",
-    "Sources: selected shell-3 intensity CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; no re-segmentation or CEJ recalculation.",
+    "Sources: selected shell-3 intensity CSVs and dynamic_10_90 ratio tables. All 16 teeth shown; cases are not paired; no CEJ recalculation.",
 )

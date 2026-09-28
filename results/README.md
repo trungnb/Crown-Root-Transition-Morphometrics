@@ -1,9 +1,11 @@
 # Saved results
 
-- [Person1 ratios](crown_root_ratio_dynamic_10_90.csv) and [Person2 ratios](P2/crown_root_ratio_dynamic_10_90.csv): 16 teeth each, historical dynamic 10–90% search variant.
-- [Descriptive summary](ratio_summary.csv): count / median / minimum / maximum of the stored `crown_root_ratio_mm` column.
-- [Person1 example intensity profile](3/upper_right_central_incisor_fdi11.csv) and [Person2 example intensity profile](P2/3/upper_right_central_incisor_fdi11.csv): FDI 11, shell thickness three voxels.
-- [Overview SVG](figures/prototype-overview.svg): current portfolio figure rendered from these saved tables. `scripts/render_figures.py` contains the reproducible plotting logic.
+| File | Contents | Original source |
+|---|---|---|
+| [Person1 ratios](crown_root_ratio_dynamic_10_90.csv) / [Person2 ratios](P2/crown_root_ratio_dynamic_10_90.csv) | 16 saved crown–root ratios per case; historical dynamic 10–90% variant | `ratio1.ipynb` / `ratio2.ipynb` |
+| [Descriptive summary](ratio_summary.csv) | Count, median, minimum and maximum of saved `crown_root_ratio_mm` values | Saved ratio tables |
+| [Person1 profile](3/upper_right_central_incisor_fdi11.csv) / [Person2 profile](P2/3/upper_right_central_incisor_fdi11.csv) | Per-slice intensity profile for FDI 11; shell thickness three voxels | `CEJ1.ipynb` / `CEJ2.ipynb` |
+| [Overview SVG](figures/prototype-overview.svg) | Saved profiles and ratios | `scripts/render_figures.py` and selected CSVs |
 
 Column names are preserved from the historical notebooks. `crown_trans_mm` includes the
 transition zone; `root_mm` is the saved root extent; `crown_root_ratio_mm` is their saved
