@@ -20,21 +20,32 @@ diagnostic results.
 ## How I approached it
 
 ```mermaid
-flowchart LR
-    A["INPUT<br/>CT + tooth mask"] --> B["ALIGN + SHELL<br/>Principal-axis alignment<br/>Outer-shell sampling"]
-    B --> C["INTENSITY PROFILE<br/>Slice-wise shell summaries"]
-    C --> D["PROTOTYPE HEURISTIC<br/>Two stable regions<br/>+ transition zone"]
-    D --> E["SAVED OUTPUTS<br/>Profiles + exploratory<br/>crown–root ratios"]
+flowchart TD
+    A["QUESTION<br/>Can an outer-shell intensity profile provide<br/>a measurable crown–root transition proxy?"]
+    --> B["PROFILE CONSTRUCTION<br/>Tooth mask → outer shell<br/>principal-axis alignment → affine rotation"]
+    --> C["SLICE FEATURES<br/>Mean · SD · min · max intensity"]
+
+    C --> D["HEURISTIC SEARCH<br/>Central profile only<br/>stable end regions + bounded transition"]
+    D --> E["DERIVED MEASURE<br/>Select transition<br/>compute (crown + transition) / root extent"]
+    E --> F["SAVED OBSERVATION<br/>Two-case exploratory tables<br/>including retained anomalous ratios"]
+    F --> G["BOUNDARY<br/>Intensity-derived proxy ≠ anatomical CEJ<br/>No manual reference · no external validation"]
 
     classDef method fill:#EDF7F6,stroke:#168B8A,color:#17324D
     classDef result fill:#17324D,stroke:#17324D,color:#FFFFFF
-    class B,C,D method
-    class E result
+    class B,C,D,E method
+    class F,G result
 ```
 
 The historical ratio notebooks use the three-voxel shell and search the central 10–90% of
-the profile for two relatively stable regions separated by a transition. The method is
-heuristic and was not calibrated against anatomical CEJ annotations.
+the profile under minimum stable-region and tooth-group-specific transition-length constraints.
+Exact rules remain in the notebooks. The method is heuristic and was not calibrated against
+anatomical CEJ annotations.
+
+**Reproducibility note:** the committed Person2 shell-3 profile used by the saved ratio analysis
+is preserved in `results/`, while the current final execution cell in `CEJ2.ipynb` invokes a
+five-voxel shell after the earlier 1–4 shell loop was commented out. The saved historical
+result is therefore documented, but the current notebook is not a one-click regeneration of
+that shell-3 input.
 
 ## Read the code and results
 
